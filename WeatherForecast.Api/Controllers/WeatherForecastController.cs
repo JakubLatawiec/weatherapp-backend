@@ -22,14 +22,6 @@ namespace WeatherForecast.Api.Controllers
             if (!latitude.HasValue || !longitude.HasValue)
                 return BadRequest(new { error = "Missing latitude or longitude values in request query." });
 
-            /*
-            if (!double.TryParse(latitude, System.Globalization.NumberStyles.Float, CultureInfo.InvariantCulture, out var lat) ||
-                !double.TryParse(longitude, System.Globalization.NumberStyles.Float, CultureInfo.InvariantCulture, out var lng))
-            {
-                return BadRequest(new { error = "Latitude and longitude must be floating-point." });
-            }
-            */
-
             var result = await _mediator.Send(new DailyWeatherForecastQuery(latitude.Value, longitude.Value));
             return Ok(result);
         }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeatherForecast.Shared.Calculations;
 
 namespace WeatherForecast.Domain.ValueObjects
 {
     public class DailyWeatherForecast
     {
-        public DateTime Date { get; private set; }
+        public DateOnly Date { get; private set; }
         public float MaxTemperature { get; private set; }
         public float MinTemperature { get; private set; }
         public int WeatherCode { get; private set; }
@@ -26,7 +27,7 @@ namespace WeatherForecast.Domain.ValueObjects
                 float pressure
             )
         {
-            Date = date;
+            Date = DateOnly.FromDateTime(date);
             MaxTemperature = maxTemperature;
             MinTemperature = minTemperature;
             WeatherCode = weatherCode;
@@ -36,10 +37,8 @@ namespace WeatherForecast.Domain.ValueObjects
 
         private float CalculateSolarEnergy()
         {
-            const float installationPower = 2.5F;
-            const float panelEfficiency = 0.2F;
-            float sunshineTimeInHours = SunshineTime / 3600;
-            return installationPower * panelEfficiency * sunshineTimeInHours;
+            float sunshineTimeInHours = SunshineTime / 3600;   
+            return MathF.Round(SolarCalculations.INSTALATION_POWER * SolarCalculations.PANEL_EFFICIENCY * sunshineTimeInHours, 2);
         }
     }
 }

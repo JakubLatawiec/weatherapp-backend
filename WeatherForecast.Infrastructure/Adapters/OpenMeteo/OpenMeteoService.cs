@@ -14,19 +14,21 @@ namespace WeatherForecast.Infrastructure.Adapters.OpenMeteo
     public class OpenMeteoService : IWeatherForecastService
     {
         private readonly HttpClient _httpClient;
+        private readonly string _apiUrl;
 
         public OpenMeteoService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            _apiUrl = Environment.GetEnvironmentVariable("OPENMETEO_API_URL") ?? "";
         }
 
         public async Task<WeatherForecastData> GetWeatherForecastAsync(double latitude, double longitude)
         {
-            var url = string.Format(CultureInfo.InvariantCulture, "https://api.open-meteo.com/v1/forecast" +
-                "?latitude={0}&longitude={1}" +
+            var url = string.Format(CultureInfo.InvariantCulture, "{0}" +
+                "?latitude={1}&longitude={2}" +
                 "&daily=temperature_2m_max,temperature_2m_min,weathercode,sunshine_duration" +
                 "&hourly=pressure_msl" +
-                "&timezone=auto", latitude, longitude);
+                "&timezone=auto", _apiUrl, latitude, longitude);
 
             var response = await _httpClient.GetAsync(url);
 

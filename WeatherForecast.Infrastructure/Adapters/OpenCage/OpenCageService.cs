@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Json;
 using WeatherForecast.Domain.Interfaces.Services;
 using WeatherForecast.Domain.ValueObjects;
 
@@ -12,19 +7,21 @@ namespace WeatherForecast.Infrastructure.Adapters.OpenCage
     public class OpenCageService : ILocationService
     {
         private readonly HttpClient _httpClient;
+        private readonly string _apiUrl;
         private readonly string _apiKey;
 
         public OpenCageService(HttpClient httpClient)
         {
             _httpClient = httpClient;
             _apiKey = Environment.GetEnvironmentVariable("OPENCAGE_API_KEY") ?? "";
+            _apiUrl = Environment.GetEnvironmentVariable("OPENCAGE_API_URL") ?? "";
         }
 
         public async Task<Location>? GetLocationFromCoordinatesAsync(double latitude, double longitude)
         {
             try
             {
-                var url = $"https://api.opencagedata.com/geocode/v1/json" +
+                var url = $"{_apiUrl}" +
                      $"?q={latitude},{longitude}" +
                      $"&key={_apiKey}";
 

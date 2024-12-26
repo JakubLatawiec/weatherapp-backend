@@ -30,7 +30,7 @@ namespace WeatherForecast.Infrastructure.Adapters.OpenMeteo
                     maxTemperature: response.Daily.Temperature_2m_Max[i],
                     minTemperature: response.Daily.Temperature_2m_Min[i],
                     weatherCode: response.Daily.WeatherCode[i],
-                    sunshineTime: response.Daily.Sunshine_Duration[i],
+                    sunshineTime: (int)response.Daily.Sunshine_Duration[i],
                     pressure: averagePressure
                 ));
             }

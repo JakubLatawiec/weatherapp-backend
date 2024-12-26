@@ -8,7 +8,7 @@ namespace WeatherForecast.Application.Contracts.Dtos
 {
     public class DailyDto
     {
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public int WeatherCode { get; set; }
         public float TemperatureMin { get; set; }
         public float TemperatureMax { get; set; }

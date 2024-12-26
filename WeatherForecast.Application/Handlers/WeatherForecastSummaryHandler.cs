@@ -37,7 +37,7 @@ namespace WeatherForecast.Application.Handlers
             var summaryDto = new SummaryDto
             {
                 AveragePressure = summaryData.AveragePressure,
-                AverageSunshineTime = summaryData.AverageSunshineTime,
+                AverageSunshineTime = (int)summaryData.AverageSunshineTime,
                 TemperatureMin = summaryData.MinTemperature,
                 TemperatureMax = summaryData.MaxTemperature,
                 WeekSummary = summaryData.WeekDescription

@@ -1,9 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherForecast.Application.Contracts.Dtos;
 using WeatherForecast.Application.Contracts.Queries;
 using WeatherForecast.Domain.Interfaces.Repositories;

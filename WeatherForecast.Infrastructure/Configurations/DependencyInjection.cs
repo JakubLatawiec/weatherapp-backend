@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WeatherForecast.Domain.Interfaces.Repositories;
 using WeatherForecast.Domain.Interfaces.Services;
+using WeatherForecast.Infrastructure.Adapters.OpenCage;
 using WeatherForecast.Infrastructure.Adapters.OpenMeteo;
 using WeatherForecast.Infrastructure.Repositories;
 
@@ -12,6 +13,7 @@ namespace WeatherForecast.Infrastructure.Configurations
         {
             services.AddHttpClient<IWeatherForecastService, OpenMeteoService>();
             services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
+            services.AddHttpClient<ILocationService, OpenCageService>();
             return services;
         }
     }

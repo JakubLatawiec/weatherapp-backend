@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Application.Contracts.Dtos
 {
-    public class WeatherForecastSummaryDto
+    public class LocationDto
     {
-        public required LocationDto Location { get; set; }
-        public required SummaryDto Summary { get; set; }
+        public string Country {  get; set; } = "Nowhere";
+        public string City { get; set; } = string.Empty;
     }
 }

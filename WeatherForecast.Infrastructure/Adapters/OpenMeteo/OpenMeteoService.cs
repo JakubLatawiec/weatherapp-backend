@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
@@ -21,11 +22,11 @@ namespace WeatherForecast.Infrastructure.Adapters.OpenMeteo
 
         public async Task<WeatherForecastData> GetWeatherForecastAsync(double latitude, double longitude)
         {
-            var url = $"https://api.open-meteo.com/v1/forecast" +
-                $"?latitude={latitude}&longitude={longitude}" +
-                $"&daily=temperature_2m_max,temperature_2m_min,weathercode,sunshine_duration" +
-                $"&hourly=pressure_msl" +
-                $"&timezone=auto";
+            var url = string.Format(CultureInfo.InvariantCulture, "https://api.open-meteo.com/v1/forecast" +
+                "?latitude={0}&longitude={1}" +
+                "&daily=temperature_2m_max,temperature_2m_min,weathercode,sunshine_duration" +
+                "&hourly=pressure_msl" +
+                "&timezone=auto", latitude, longitude);
 
             var response = await _httpClient.GetAsync(url);
 

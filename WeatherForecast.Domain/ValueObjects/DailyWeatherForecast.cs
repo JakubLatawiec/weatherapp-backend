@@ -36,7 +36,10 @@ namespace WeatherForecast.Domain.ValueObjects
 
         private float CalculateSolarEnergy()
         {
-            return 2.5F * 0.2F * SunshineTime;
+            const float installationPower = 2.5F;
+            const float panelEfficiency = 0.2F;
+            float sunshineTimeInHours = SunshineTime / 3600;
+            return installationPower * panelEfficiency * sunshineTimeInHours;
         }
     }
 }

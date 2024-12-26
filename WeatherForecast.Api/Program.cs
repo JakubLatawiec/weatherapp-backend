@@ -4,6 +4,9 @@ using WeatherForecast.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Env
+DotNetEnv.Env.Load();
+
 // Add services to the container.
 
 builder.Services.AddInfrastructure();

@@ -1,4 +1,6 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WeatherForecast.Application.Contracts.Queries;
 
 namespace WeatherForecast.Api.Controllers
 {
@@ -6,28 +8,31 @@ namespace WeatherForecast.Api.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IMediator _mediator;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IMediator mediator)
         {
-            _logger = logger;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IActionResult> GetWeeklyForecast([FromQuery] double? latitude, [FromQuery] double? longitude)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            if (!latitude.HasValue || !longitude.HasValue)
+                return BadRequest(new { error = "Missing latitude or longitude values in request query." });
+
+            var result = await _mediator.Send(new DailyWeatherForecastQuery(latitude.Value, longitude.Value));
+            return Ok(result);
+        }
+
+        [HttpGet("summary")]
+        public async Task<IActionResult> GetWeatherSummary([FromQuery] double? latitude, [FromQuery] double? longitude)
+        {
+            if (!latitude.HasValue || !longitude.HasValue)
+                return BadRequest(new { error = "Missing latitude or longitude values in request query." });
+
+            var result = await _mediator.Send(new WeatherForecastSummaryQuery(latitude.Value, longitude.Value));
+            return Ok(result);
         }
     }
 }

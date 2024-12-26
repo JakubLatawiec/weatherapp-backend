@@ -1,5 +1,6 @@
 using WeatherForecast.Application.Configurations;
 using WeatherForecast.Infrastructure.Configurations;
+using WeatherForecast.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 

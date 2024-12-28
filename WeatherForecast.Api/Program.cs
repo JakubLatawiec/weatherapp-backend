@@ -13,9 +13,19 @@ builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+        .WithMethods("GET")
+        .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

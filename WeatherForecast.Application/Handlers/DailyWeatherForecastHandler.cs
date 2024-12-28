@@ -31,7 +31,7 @@ namespace WeatherForecast.Application.Handlers
             var locationDto = new LocationDto
             {
                 Country = location?.Country ?? "Nowhere",
-                City = location?.City ?? string.Empty
+                City = location?.City ?? "Middle of"
             };
 
             var dailyWeather = await _repository.GetDailyWeatherForecastAsync(request.latitude, request.longitude);

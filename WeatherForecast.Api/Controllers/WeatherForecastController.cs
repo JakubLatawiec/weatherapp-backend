@@ -6,7 +6,7 @@ using WeatherForecast.Application.Contracts.Queries;
 namespace WeatherForecast.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -16,7 +16,7 @@ namespace WeatherForecast.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("daily")]
         public async Task<IActionResult> GetWeeklyForecast([FromQuery] double? latitude, [FromQuery] double? longitude)
         {
             if (!latitude.HasValue || !longitude.HasValue)

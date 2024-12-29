@@ -26,5 +26,16 @@ namespace WeatherForecast.Tests.UnitTests.Controllers
             var response = await _client.GetAsync(query);
             Assert.Equal(expectedStatusCode, response.StatusCode);
         }
+
+        [Theory]
+        [InlineData(null, null, HttpStatusCode.BadRequest)]
+        [InlineData(100.0, 0.0, HttpStatusCode.BadRequest)]
+        [InlineData(0.0, 0.0, HttpStatusCode.OK)]
+        public async Task GetWeatherForecastSummary(double? latitude, double? longitude, HttpStatusCode expectedStatusCode)
+        {
+            var query = $"/api/weatherforecast/daily?latitude={latitude}&longitude={longitude}";
+            var response = await _client.GetAsync(query);
+            Assert.Equal(expectedStatusCode, response.StatusCode);
+        }
     }
 }

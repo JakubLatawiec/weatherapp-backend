@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Api", "WeatherForecast.Api.csproj", "{81FB3B4B-22E3-42E1-B957-36C549B17D60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Api", "WeatherForecast.Api\WeatherForecast.Api.csproj", "{81FB3B4B-22E3-42E1-B957-36C549B17D60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Application", "..\WeatherForecast.Application\WeatherForecast.Application.csproj", "{4A5ECCD9-733A-4EB7-A611-2007ADA318AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Application", "WeatherForecast.Application\WeatherForecast.Application.csproj", "{4A5ECCD9-733A-4EB7-A611-2007ADA318AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Domain", "..\WeatherForecast.Domain\WeatherForecast.Domain.csproj", "{1BAF32AD-6FE1-4B33-B1D0-776971385907}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Domain", "WeatherForecast.Domain\WeatherForecast.Domain.csproj", "{1BAF32AD-6FE1-4B33-B1D0-776971385907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Infrastructure", "..\WeatherForecast.Infrastructure\WeatherForecast.Infrastructure.csproj", "{FDFB720D-1E1C-4D0B-B230-FA406BE5FF94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Infrastructure", "WeatherForecast.Infrastructure\WeatherForecast.Infrastructure.csproj", "{FDFB720D-1E1C-4D0B-B230-FA406BE5FF94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Shared", "..\WeatherForecast.Shared\WeatherForecast.Shared.csproj", "{E3C6BA51-F50A-4AEE-AFA0-3ED4C42492D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Shared", "WeatherForecast.Shared\WeatherForecast.Shared.csproj", "{E3C6BA51-F50A-4AEE-AFA0-3ED4C42492D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Tests", "WeatherForecast.Tests\WeatherForecast.Tests.csproj", "{4988E0DD-F0AE-478F-A35F-72D8FEFCBD1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E3C6BA51-F50A-4AEE-AFA0-3ED4C42492D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3C6BA51-F50A-4AEE-AFA0-3ED4C42492D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3C6BA51-F50A-4AEE-AFA0-3ED4C42492D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4988E0DD-F0AE-478F-A35F-72D8FEFCBD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4988E0DD-F0AE-478F-A35F-72D8FEFCBD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4988E0DD-F0AE-478F-A35F-72D8FEFCBD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4988E0DD-F0AE-478F-A35F-72D8FEFCBD1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

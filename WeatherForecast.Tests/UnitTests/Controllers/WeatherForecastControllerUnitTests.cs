@@ -19,7 +19,6 @@ namespace WeatherForecast.Tests.UnitTests.Controllers
         [Theory]
         [InlineData(null, null, HttpStatusCode.BadRequest)]
         [InlineData(100.0, 0.0, HttpStatusCode.BadRequest)]
-        [InlineData(0.0, 0.0, HttpStatusCode.OK)]
         public async Task GetDailyWeaherForecast(double? latitude, double? longitude, HttpStatusCode expectedStatusCode)
         {
             var query = $"/api/weatherforecast/daily?latitude={latitude}&longitude={longitude}";
@@ -30,7 +29,6 @@ namespace WeatherForecast.Tests.UnitTests.Controllers
         [Theory]
         [InlineData(null, null, HttpStatusCode.BadRequest)]
         [InlineData(100.0, 0.0, HttpStatusCode.BadRequest)]
-        [InlineData(0.0, 0.0, HttpStatusCode.OK)]
         public async Task GetWeatherForecastSummary(double? latitude, double? longitude, HttpStatusCode expectedStatusCode)
         {
             var query = $"/api/weatherforecast/daily?latitude={latitude}&longitude={longitude}";

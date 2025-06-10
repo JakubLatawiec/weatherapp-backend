@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore WeatherForecast.Api/WeatherForecast.Api.csproj
 
       - name: Build
-        run: dotnet build --no-restore -c Release
+        run: dotnet build WeatherForecast.Api/WeatherForecast.Api.csproj -c Release
 
       - name: Run tests
         run: dotnet test WeatherForecast.Tests
